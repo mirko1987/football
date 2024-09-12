@@ -3,19 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href="https://fonts.googleapis.com/css2?family=MD+Nichrome&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/global.css">
     <script type="module" src="../script/season.js"></script>
     <title>Season</title>
 </head>
 <body>
-    <div id="teams" class="ag-theme-quartz-dark ag-theme-acmecorp"></div>
+    <div class="navbar-container">
+        <nav class="navbar">
+           <div class="flex-items-center">
+            <img src="../style/asset/img/logo.png" laoding="lazy"  decoding ="async" class="logo">
+           </div>
+           <ul>
+            <li><a href="./home.html"> Home</a></li>
+            <li><a href="./statistic.html">Statistics</a></li>
+            
+         </ul>
+            
+        </nav>
+    </div>
+    <main class="flex-1">
+        <h1 class="primary-h1">Fanta Football</h1>
+
+    </main>
+    <div class="grid-container">
+        <section class="background">
+
+        </section>
+      <section>
+        <div id="table-container">
+            
+        </section>      
+           
+              
+            </div>
+            <div id="pagination-container"></div>
+    
     <div>
-        <canvas id="myChart"></canvas>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
+  
+    <script src="../script/utils.js" type="module"></script>
     <script src="../script/config.js" type="module"></script>
+
         <script src="../script/season.js" type="module"></script>
     </div>
 </body>

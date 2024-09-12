@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
     <link href="https://fonts.googleapis.com/css2?family=MD+Nichrome&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/global.css">
-
-    <title>Document</title>
 </head>
 <body>
     <div class="navbar-container">
@@ -33,20 +32,35 @@
 
         </section>
       <section>
-        <div id="table-container">
+      <p class="primary">Select  the league that you want render stat</p> 
             
         </section>      
            
-              
+              <section>
+                <select id="leagues-dropdown">
+                    <option value="">Select a league...</option>
+                </select>
+            
+                <select id="seasons-dropdown" disabled>
+                    <option value="">Select a season...</option>
+                </select>
+            
+                <select id="teams-dropdown" disabled>
+                    <option value="">Select a team...</option>
+                </select>
+            </section>
+            <canvas id="goalsChart"></canvas>
+
             </div>
-            <div id="pagination-container"></div>
+            
     
         </div>
     </div>
     
     
     <script src="../script/utils.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../script/config.js" type="module"></script>
-    <script src="../script/home.js" type="module"></script>
+    <script src="../script/statistics.js" type="module"></script>
 </body>
 </html>
