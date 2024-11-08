@@ -1,8 +1,9 @@
 import  config  from './config.js'
 import { fetchData,populateDropdown,resetDropdown,createGoalsChart} from './utils.js';
 
-const url = "https://v3.football.api-sports.io/leagues";
 
+const url = "https://v3.football.api-sports.io/leagues";
+let teamsData = [];
 document.addEventListener('DOMContentLoaded', function () {
     const apiKey = config.apiKey // Replace with your actual API key
 
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
    // Fetch leagues and populate leagues dropdown
    fetchData(url, apiKey)
    .then(data => {
+    console.log(data)
         // Debugging
        if (data && data.response) {
            populateDropdown(leaguesDropdown, data.response, 'league');
@@ -65,7 +67,7 @@ leaguesDropdown.addEventListener('change',async  function () {
             // Fetch teams for the selected league and season
             fetchData(`https://v3.football.api-sports.io/teams?league=${leagueId}&&season=${seasonYear}`, apiKey)
                 .then(data => {
-                       
+                    console.log(data,'ttt') 
                     teamsData = data.response;
                     
                     // Store the teams data for filtering
@@ -87,7 +89,7 @@ leaguesDropdown.addEventListener('change',async  function () {
         fetchData(statisticUrl, apiKey)
         .then(data => {
                
-            console.log(data,'ciao')
+          
             createGoalsChart(data)
             // Store the teams data for filtering
            

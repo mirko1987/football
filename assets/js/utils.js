@@ -3,6 +3,24 @@ import  config  from './config.js'
 const apiKey = config.apiKey;
 let selectedId = null;
 let selectedSeason = null;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tableContainer = document.getElementById('table-container');
+    if (tableContainer) {
+        tableContainer.addEventListener('click', function(e) {
+            if (e.target && e.target.className === "detail") {
+                const id = e.target.id;
+                const clickedRow = e.target.closest('tr');
+                const seasonCell = clickedRow.querySelector('.season');
+                const seasonValue = seasonCell ? seasonCell.textContent.split("/")[0] || seasonCell.innerText : '';
+                window.location.href = `../view/season.html?id=${id}&season=${seasonValue}`;
+            }
+        });
+    }
+});
+
+
 export const getCache = (key) => {
    
     const cacheData = localStorage.getItem(key);
@@ -133,8 +151,8 @@ export const  createTable=(data, itemsPerPage = 10, currentPage = 1)=> {
         <thead>
             <tr>
             <th>Logo</th>   
-            <th>Region</th>
-            <th>League</th>
+            <th>Country/Region</th>
+            <th>League/Championship</th>
             <th>Seasons</th>
             <th>Details</th>
                 
@@ -151,7 +169,7 @@ export const  createTable=(data, itemsPerPage = 10, currentPage = 1)=> {
     </td>
             <td rowspan="${el.length}">${el.country.name}</td>
             <td rowspan="${el.length}" >${el.league.name}</td>
-            <td  class="season" rowspan="${el.length}">${el.seasons[0].year}</td>
+            <td  class="season" rowspan="${el.length}">2020/2022</td>
             <td  rowspan="${el.length}">
                    <button class="detail" id=${el.league.id}>details</button>
                </td>
@@ -213,23 +231,6 @@ const handleTableClick = (event) => {
 
 
 // Attach event listener using event delegation for dynamic elements
-document.getElementById('table-container').addEventListener('click', function(e) {
-    if (e.target && e.target.className ==="detail") {
-       // Get the clicked row (tr element)
-       const id = e.target.id
-       const clickedRow = e.target.closest('tr');
-        console.log(clickedRow)
-       // Assuming the season is in a specific cell, e.g., the second cell (index 1)
-       const seasonCell = clickedRow.querySelector('.season'); // Assuming a 'season' class exists on the season cell
-       
-       // Extract the season value from the cell
-       const seasonValue = seasonCell.textContent || seasonCell.innerText;
-
-        window.location.href = `../view/season.html?id=${id}&season=${seasonValue}`;
-
-         // Call the function when the detail button is clicked
-    }
-});
 
 
 const handleDropdownChange = (event) => {
@@ -263,7 +264,7 @@ window.changePage =function (newPage){
 
     createTable(window.data, window.itemsPerPage, newPage);
 };
-export const initTableSeason = (jsonData, perPage = 20) => {
+export const initTableSeason = (jsonData, perPage = 10) => {
     // Save data and itemsPerPage as global variables
     window.data = jsonData;
     window.itemsPerPage = perPage;
