@@ -9,34 +9,37 @@
 </head>
 <body>
     <div class="navbar-container">
+        <img src="../assets/media/logo.png" laoding="lazy"  decoding ="async" class="logo">
+
         <nav class="navbar">
            <div class="flex-items-center">
-            <img src="../assets/media/logo.png" laoding="lazy"  decoding ="async" class="logo">
+            
            </div>
                  <ul>
                     <li><a href="./home.html"> Home</a></li>
+                    <li><a href="./about.html"  rel="noopener noreferrer">About</a></li>
                     <li><a href="./statistic.html">Statistics</a></li>
-                    
-                 </ul>
+                   
+                </ul>
             
         </nav>
     </div>
-
     
     <main class="flex-1">
-        <h1 class="primary-h1">Fanta Football</h1>
+        <h1 class="primary-h1">FSU</h1>
 
     </main>
     <div class="grid-container">
         <section class="background">
+            <h2 class="primary-h2"> Statistic</h2>
 
         </section>
-      <section>
+      <section id="header">
       <p class="primary">Select  the league that you want render stat</p> 
             
         </section>      
            
-              <section>
+              <section id="filters">
                 <select id="leagues-dropdown">
                     <option value="">Select a league...</option>
                 </select>
@@ -49,7 +52,17 @@
                     <option value="">Select a team...</option>
                 </select>
             </section>
-            <canvas id="goalsChart"></canvas>
+            <section id="graph">
+                <div style="width: 25%; margin: auto;">
+                    <h3>Goals Chart</h3>
+                    <canvas id="goalsChart" width="400" height="400"></canvas>
+                </div>
+            
+                <div style="width: 25%; margin: auto;">
+                    <h3>Team Performance Pie Chart</h3>
+                    <canvas id="pieChart" width="400" height="400"></canvas>
+                </div>
+            </section>
 
             </div>
             

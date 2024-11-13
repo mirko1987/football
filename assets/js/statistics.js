@@ -1,5 +1,5 @@
 import  config  from './config.js'
-import { fetchData,populateDropdown,resetDropdown,createGoalsChart} from './utils.js';
+import { fetchData,populateDropdown,resetDropdown,createGoalsChart, createPieChart} from './utils.js';
 
 
 const url = "https://v3.football.api-sports.io/leagues";
@@ -90,7 +90,9 @@ leaguesDropdown.addEventListener('change',async  function () {
         .then(data => {
                
           
-            createGoalsChart(data)
+            createGoalsChart(data);
+            createPieChart(data)
+
             // Store the teams data for filtering
            
         })

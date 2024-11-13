@@ -95,7 +95,7 @@ export const seasonTable=(data, itemsPerPage = 10, currentPage = 1)=>{
         <td rowspan="${el.length}">${el.player.nationality}</td>
         
         <td rowspan="${el.length}">
-            <img src="${el.player.photo}" alt="${el.player.photo} Logo" style="width: 30px;">
+            <img src="${el.player.photo}" loading="lazy" alt="${el.player.photo} Logo" style="width: 30px;">
            
         </td>
          <td rowspan="${el.length}" >${el.statistics[0].goals.total}</td>
@@ -129,6 +129,7 @@ const tableHTML = `
 }
 
 document.getElementById('pagination-container').innerHTML = paginationControls;
+
 tableContainer.addEventListener('click', handleTableClick);
 
 tableContainer.addEventListener('change', handleDropdownChange);
@@ -164,7 +165,7 @@ export const  createTable=(data, itemsPerPage = 10, currentPage = 1)=> {
     const tableRows =  paginatedData.map(el => `
         <tr>
         <td rowspan="${el.length}">
-        <img src="${el.league.logo}" alt="${el.league.name} Logo" style="width: 30px;">
+        <img src="${el.league.logo}" loading = "lazy" alt="${el.league.name} Logo" style="width: 30px;">
        
     </td>
             <td rowspan="${el.length}">${el.country.name}</td>
@@ -254,6 +255,7 @@ const handleDropdownChange = (event) => {
     }
 };
 window.changePage =function (newPage){
+    window.scrollTo({ top: 0 })
     const url = window.location.href;
     const containsSeason = url.includes("season");
     const containsId = url.includes("id");
@@ -325,9 +327,61 @@ export const populateDropdown = (dropdown, data, type) => {
         });
     }
 };
+export const createPieChart= (data)=>{
+    console.log(data.response.fixtures,'data test')
+ const winCount =  data.response.fixtures
+.wins.total;
+ const lossCount = data.response.fixtures
+.loses.total;
+ const drawCount = data.response.fixtures
+.draws.total;
+ const ctx = document.getElementById('pieChart').getContext('2d');
 
+ const set = {
+    labels: ['Wins', 'Losses', 'Draws'],
+    datasets: [{
+        label: 'Team Performance',
+        data: [winCount, lossCount, drawCount],
+        backgroundColor: ['#4CAF50', '#F44336', '#FFC107'], // Colors for Wins, Losses, Draws
+        hoverOffset: 4
+    }]
+
+
+};
+
+const pieChart = new Chart(ctx, {
+    type: 'pie',
+    data: set,
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const label = context.label || '';
+                        const value = context.raw;
+                        const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                        const percentage = ((value / total) * 100).toFixed(1);
+                        return `${label}: ${value} (${percentage}%)`;
+                    }
+                }
+            }
+        }
+    }
+});
+
+
+
+
+ 
+    
+}
 
 export const  createGoalsChart=(data)=>{
+    
     // Extracting data for the chart
     const homeGoals = data.response.goals.for.total.home;
     const awayGoals = data.response.goals.for.total.away;
