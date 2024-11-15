@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link href="https://fonts.googleapis.com/css2?family=MD+Nichrome&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/global.css">
+</head>
+<body>
+    <div class="navbar-container">
+        <img src="../assets/media/logo.png" laoding="lazy"  decoding ="async" class="logo">
+
+        <nav class="navbar">
+           <div class="flex-items-center">
+            
+           </div>
+                 <ul>
+                    <li><a href="./home.html"> Home</a></li>
+                    <li><a href="./about.html"  rel="noopener noreferrer">About</a></li>
+                    <li><a href="./statistic.html">Statistics</a></li>
+                   
+                </ul>
+            
+        </nav>
+    </div>
+    
+    <main class="flex-1">
+        <h1 class="primary-h1">FSU</h1>
+
+    </main>
+    <div class="grid-container">
+        <section class="background">
+            <h2 class="primary-h2"> Statistic</h2>
+
+        </section>
+      <section id="header">
+      <p class="primary">Select  the league that you want render stat</p> 
+            
+        </section>      
+           
+              <section id="filters">
+                <select id="leagues-dropdown">
+                    <option value="">Select a league...</option>
+                </select>
+            
+                <select id="seasons-dropdown" disabled>
+                    <option value="">Select a season...</option>
+                </select>
+            
+                <select id="teams-dropdown" disabled>
+                    <option value="">Select a team...</option>
+                </select>
+            </section>
+            <div id="table-container"></div>
+               
+            
+               
+            </section>
+
+            </div>
+            
+    
+        </div>
+    </div>
+    
+    
+    <script src="../assets/js/utils.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/config.js" type="module"></script>
+    <script src="../assets/js/statistics.js" type="module"></script>
+</body>
+</html>

@@ -441,6 +441,47 @@ export const resetDropdown = (dropdown)=>{
 }
 
 
+export const crateStasticTable1 = (data)=>{
+    console.log()
+    const totalItems = data.length;
+    const allKeys  = Object.values(data).flatMap(Object.keys);
+    const uniqueKeys = [...new Set(allKeys)];
+    console.log(allKeys,uniqueKeys,'test');
+    const tableHeaders = `
+    <thead>
+    <tr>
+    <th>Played</th>
+    
+    <th>Wins</th>
+    <th>Draws</th>
+    <th>Loses</th>
+    
+    
+</tr>
+</thead>
+    `;
+
+
+    const tableRows = data.map(el=>`
+    <tr>
+    <td class="clickable-id" rowspan="${el.length}">${el.Object.keys(el)}</td>
+
+    `).join("")
+    const tableHTML = `
+        <table border="1" cellpadding="5" style="width: 100%;">
+            ${tableHeaders}
+            <tbody>
+                ${tableRows}
+            </tbody>
+        </table>
+    `;
+    const tableContainer = document.getElementById('table-container');
+    tableContainer.innerHTML = '';
+    tableContainer.innerHTML+=tableHTML
+    
+}
+
+
 
 
 // Example data.response object
